@@ -6,7 +6,7 @@
 //  Copyright © 2019 DKJone. All rights reserved.
 //
 
-#import "MyUtils/DKHelper.h"
+#import "DKHelper.h"
 @interface DKHelper(){
     BtnBlock act1;
     BtnBlock act2;
