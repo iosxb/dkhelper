@@ -1,4 +1,4 @@
-// NSArray+VAPUtil.h
+// NSArray+VAPUtil.m
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,10 +13,25 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
+#import "NSArray+VAPUtil.h"
 
-@interface NSArray (VAPUtil)
+@implementation NSArray (VAPUtil)
 
-- (CGRect)hwd_rectValue;
+- (CGRect)hwd_rectValue {
+    
+    if (self.count < 4) {
+        return CGRectZero;
+    }
+    for (int i = 0; i < self.count; i++) {
+        id value = self[i];
+        if (i >= 4) {
+            break ;
+        }
+        if (![value isKindOfClass:[NSString class]] && ![value isKindOfClass:[NSNumber class]]) {
+            return CGRectZero;
+        }
+    }
+    return CGRectMake([self[0] floatValue], [self[1] floatValue], [self[2] floatValue], [self[3] floatValue]);
+}
 
 @end

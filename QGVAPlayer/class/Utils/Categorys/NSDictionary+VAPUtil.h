@@ -1,4 +1,4 @@
-// NSArray+VAPUtil.h
+// NSDictionary+VAPUtil.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -15,8 +15,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NSArray (VAPUtil)
 
-- (CGRect)hwd_rectValue;
+@interface NSDictionary (VAPUtil)
+
+- (CGFloat)hwd_floatValue:(NSString *)key;
+- (NSInteger)hwd_integerValue:(NSString *)key;
+- (NSString *)hwd_stringValue:(NSString *)key;
+- (NSDictionary *)hwd_dicValue:(NSString *)key;
+- (NSArray *)hwd_arrValue:(NSString *)key;
 
 @end
+

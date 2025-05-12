@@ -1,4 +1,4 @@
-// NSArray+VAPUtil.h
+// UIView+MP4HWDecode.m
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,10 +13,8 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
+#import "UIView+MP4HWDecode.h"
 
-@interface NSArray (VAPUtil)
-
-- (CGRect)hwd_rectValue;
+@implementation UIView (MP4HWDecode)
 
 @end

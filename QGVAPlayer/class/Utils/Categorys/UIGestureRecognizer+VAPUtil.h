@@ -1,4 +1,4 @@
-// NSArray+VAPUtil.h
+// UIGestureRecognizer+VAPUtil.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -15,8 +15,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NSArray (VAPUtil)
+@interface UIGestureRecognizer (VAPUtil)
 
-- (CGRect)hwd_rectValue;
+- (instancetype)initWithVapActionBlock:(void (^)(id sender))block;
+
+- (void)addVapActionBlock:(void (^)(id sender))block;
+
+- (void)removeAllVapActionBlocks;
 
 @end

@@ -1,4 +1,4 @@
-// NSArray+VAPUtil.h
+// UIDevice+VAPUtil.m
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,10 +13,26 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
+#import "UIDevice+VAPUtil.h"
 
-@interface NSArray (VAPUtil)
+MTLResourceOptions getDefaultMTLResourceOption() {
+    
+    if (@available(iOS 9.0, *)) {
+        return MTLResourceStorageModeShared;
+    } else {
+        return MTLResourceCPUCacheModeDefaultCache;
+    }
+}
+@implementation UIDevice (VAPUtil)
 
-- (CGRect)hwd_rectValue;
++ (double)systemVersionNum {
+    
+    static double version;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        version = [UIDevice currentDevice].systemVersion.doubleValue;
+    });
+    return version;
+}
 
 @end

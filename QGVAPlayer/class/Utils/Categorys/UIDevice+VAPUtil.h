@@ -1,4 +1,4 @@
-// NSArray+VAPUtil.h
+// UIDevice+VAPUtil.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -14,9 +14,32 @@
 // limitations under the License.
 
 #import <UIKit/UIKit.h>
+#import <Metal/Metal.h>
 
-@interface NSArray (VAPUtil)
+#ifndef kHWDSystemVersion
+#define kHWDSystemVersion [UIDevice systemVersionNum]
+#endif
 
-- (CGRect)hwd_rectValue;
+#ifndef kHWDiOS9Later
+#define kHWDiOS9Later (kHWDSystemVersion >= 9)
+#endif
+
+#define kDefaultMTLResourceOption getDefaultMTLResourceOption()
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+    MTLResourceOptions getDefaultMTLResourceOption(void);
+#ifdef __cplusplus
+}
+#endif
+    
+NS_ASSUME_NONNULL_BEGIN
+
+@interface UIDevice (VAPUtil)
+
++ (double)systemVersionNum;
 
 @end
+
+NS_ASSUME_NONNULL_END

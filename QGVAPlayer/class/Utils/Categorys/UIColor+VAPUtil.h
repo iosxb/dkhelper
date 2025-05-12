@@ -1,4 +1,4 @@
-// NSArray+VAPUtil.h
+// UIColor+VAPUtil.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -15,8 +15,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NSArray (VAPUtil)
+NS_ASSUME_NONNULL_BEGIN
 
-- (CGRect)hwd_rectValue;
+@interface UIColor (VAPUtil)
+
++ (instancetype)hwd_colorWithHexString:(NSString *)hexStr;
 
 @end
+
+NS_ASSUME_NONNULL_END
