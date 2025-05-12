@@ -10,9 +10,9 @@
 
 //MARK: - wechat quick imports
 #import "wechatHeaders/UiUtil.h"
-#import "WechatHeaders.h"
+#import "wechatHeaders/WechatHeaders.h"
 #import <objc/objc-runtime.h>
-#import "WCUIAlertView.h"
+#import "wechatHeaders/WCUIAlertView.h"
 #import "DKHelperConfig.h"
 #import <UIKit/UIKit.h>
 #import "NSArray+Utils.h"
