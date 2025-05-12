@@ -50,7 +50,7 @@ return cValue; \
 
 #import "QGVAPlayer/Shaders/QGHWDShaderTypes.h"
 #import <UIKit/UIKit.h>
-#import "QGVAPMaskInfo.h"
+#import "QGVAPlayer/class/Models/QGVAPMaskInfo.h"
 
 extern NSInteger const kQGHWDMP4DefaultFPS;      //默认fps 25
 extern NSInteger const kQGHWDMP4MinFPS;          //最小fps 1
