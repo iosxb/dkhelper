@@ -14,7 +14,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DKHelper.h"
+#import "MyUtils/DKHelper.h"
 
 @interface DKCleanFriendsController : UIViewController
 - (instancetype)initWithContactList:(NSArray *)contactList contactDesc:(NSString *)contactDesc;
