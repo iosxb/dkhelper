@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //MARK: - wechat quick imports
-#import "UiUtil.h"
+#import "wechatHeaders/UiUtil.h"
 #import "WechatHeaders.h"
 #import <objc/objc-runtime.h>
 #import "WCUIAlertView.h"
