@@ -36,6 +36,8 @@ DKWeChat_LDFLAGS = -lrocketbootstrap
 # 安装时清理旧文件
 DKWeChat_INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries
 
+CFLAGS += -I./wechatHeaders -I./Utils
+
 # 包含标准模板
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
