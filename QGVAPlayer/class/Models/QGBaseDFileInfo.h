@@ -1,4 +1,4 @@
-// QGBaseAnimatedImageFrame.h
+// QGBaseDFileInfo.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -15,11 +15,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface QGBaseAnimatedImageFrame : NSObject
+@interface QGBaseDFileInfo : NSObject
 
-@property (atomic, assign) NSInteger frameIndex;         //当前帧索引
-@property (atomic, assign) NSTimeInterval duration;      //播放时长
-/** pts */
-@property (atomic, assign) uint64_t pts;
+@property (nonatomic, strong) NSString *filePath;      //文件路径
+@property (atomic, assign) NSInteger occupiedCount;    //作用类似retainCount
 
 @end

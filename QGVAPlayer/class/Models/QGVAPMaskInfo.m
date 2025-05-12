@@ -1,4 +1,4 @@
-// QGBaseAnimatedImageFrame.h
+//  QGVAPMaskInfo.m
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,13 +13,19 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Foundation/Foundation.h>
+#import "QGVAPMaskInfo.h"
+#import "QGVAPTextureLoader.h"
+#import "QGHWDMetalRenderer.h"
 
-@interface QGBaseAnimatedImageFrame : NSObject
+@implementation QGVAPMaskInfo
 
-@property (atomic, assign) NSInteger frameIndex;         //当前帧索引
-@property (atomic, assign) NSTimeInterval duration;      //播放时长
-/** pts */
-@property (atomic, assign) uint64_t pts;
+@synthesize texture = _texture;
+
+- (id<MTLTexture>)texture {
+    if (!_texture) {
+        _texture = [QGVAPTextureLoader loadTextureWithData:self.data device:kQGHWDMetalRendererDevice width:self.dataSize.width height:self.dataSize.height];
+    }
+    return _texture;
+}
 
 @end

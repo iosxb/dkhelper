@@ -1,4 +1,4 @@
-// QGBaseAnimatedImageFrame.h
+// QGBaseAnimatedImageFrame+Displaying.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,13 +13,13 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Foundation/Foundation.h>
+#import "QGBaseAnimatedImageFrame.h"
 
-@interface QGBaseAnimatedImageFrame : NSObject
+@interface QGBaseAnimatedImageFrame (Displaying)
 
-@property (atomic, assign) NSInteger frameIndex;         //当前帧索引
-@property (atomic, assign) NSTimeInterval duration;      //播放时长
-/** pts */
-@property (atomic, assign) uint64_t pts;
+@property (nonatomic, strong) NSDate *startDate; //开始播放的时间
+@property (nonatomic, assign) NSTimeInterval decodeTime; //解码时间
+
+- (BOOL)shouldFinishDisplaying;     //是否需要结束播放（根据播放时长来决定）
 
 @end

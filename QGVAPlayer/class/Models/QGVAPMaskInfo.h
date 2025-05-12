@@ -1,4 +1,4 @@
-// QGBaseAnimatedImageFrame.h
+// QGVAPMaskInfo.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -14,12 +14,27 @@
 // limitations under the License.
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Metal/Metal.h>
 
-@interface QGBaseAnimatedImageFrame : NSObject
+typedef NSUInteger QGVAPMaskValues;
 
-@property (atomic, assign) NSInteger frameIndex;         //当前帧索引
-@property (atomic, assign) NSTimeInterval duration;      //播放时长
-/** pts */
-@property (atomic, assign) uint64_t pts;
+NS_ASSUME_NONNULL_BEGIN
+
+// 如果要更新data、rect、size必须重新创建QGVAPMaskInfo对象
+@interface QGVAPMaskInfo : NSObject
+
+/** mask数据 0/1 Byte */
+@property (nonatomic, strong) NSData *data;
+/** 采样范围 与datasize单位一致 */
+@property (nonatomic, assign) CGRect sampleRect;
+/** mask 大小 单位pixel */
+@property (nonatomic, assign) CGSize dataSize;
+/** 模糊范围，单位pixel */
+@property (nonatomic, assign) NSInteger blurLength;
+/** mask纹理 */
+@property (nonatomic, strong, readonly) id<MTLTexture> texture;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -1,4 +1,4 @@
-// QGBaseAnimatedImageFrame.h
+// QGBaseAnimatedImageFrame+Displaying.m
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -12,14 +12,23 @@
 // distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
+#import "QGBaseAnimatedImageFrame+Displaying.h"
+#import <objc/runtime.h>
+#import "VAPMacros.h"
 
-#import <Foundation/Foundation.h>
+@implementation QGBaseAnimatedImageFrame (Displaying)
 
-@interface QGBaseAnimatedImageFrame : NSObject
+HWDSYNTH_DYNAMIC_PROPERTY_CTYPE(decodeTime, setDecodeTime, NSTimeInterval)
+HWDSYNTH_DYNAMIC_PROPERTY_OBJECT(startDate, setStartDate, OBJC_ASSOCIATION_RETAIN);
 
-@property (atomic, assign) NSInteger frameIndex;         //当前帧索引
-@property (atomic, assign) NSTimeInterval duration;      //播放时长
-/** pts */
-@property (atomic, assign) uint64_t pts;
+- (BOOL)shouldFinishDisplaying {
+
+    if (!self.startDate) {
+        return YES;
+    }
+    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:self.startDate];
+    //每一个VSYNC16ms
+    return timeInterval*1000 + 10 >= self.duration;
+}
 
 @end

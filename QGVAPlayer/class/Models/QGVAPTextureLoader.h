@@ -1,4 +1,4 @@
-// QGBaseAnimatedImageFrame.h
+// QGVAPTextureLoader.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,13 +13,19 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Metal/Metal.h>
 
-@interface QGBaseAnimatedImageFrame : NSObject
+@interface QGVAPTextureLoader : NSObject
 
-@property (atomic, assign) NSInteger frameIndex;         //当前帧索引
-@property (atomic, assign) NSTimeInterval duration;      //播放时长
-/** pts */
-@property (atomic, assign) uint64_t pts;
++ (id<MTLBuffer>)loadVapColorFillBufferWith:(UIColor *)color device:(id<MTLDevice>)device;
+
++ (id<MTLTexture>)loadTextureWithImage:(UIImage *)image device:(id<MTLDevice>)device;
+
++ (id<MTLTexture>)loadTextureWithData:(NSData *)data device:(id<MTLDevice>)device width:(CGFloat)width height:(CGFloat)height;
+
++ (UIImage *)drawingImageForText:(NSString *)textStr color:(UIColor *)color size:(CGSize)size bold:(BOOL)bold;
+
++ (UIFont *)getAppropriateFontWith:(NSString *)text rect:(CGRect)fitFrame designedSize:(CGFloat)designedFontSize bold:(BOOL)isBold textSize:(CGSize *)textSize;
 
 @end
