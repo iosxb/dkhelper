@@ -1,4 +1,4 @@
-// QGVAPMetalRenderer.h
+// QGVAPMetalView.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,36 +13,25 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "QGVAPConfigModel.h"
-#import <Metal/Metal.h>
-#import "VAPMacros.h"
 
-#if TARGET_OS_SIMULATOR//模拟器
+@class QGVAPMaskInfo;
 
-@interface QGVAPMetalRenderer : NSObject
+@protocol QGVAPMetalViewDelegate <NSObject>
 
-@property (nonatomic, strong) QGVAPCommonInfo *commonInfo;
-
-- (instancetype)initWithMetalLayer:(id)layer;
-- (void)renderPixelBuffer:(CVPixelBufferRef)pixelBuffer metalLayer:(id)layer mergeInfos:(NSArray<QGVAPMergedInfo *> *)infos;
-- (void)dispose;
+- (void)onMetalViewUnavailable;
 
 @end
 
-#else
+@interface QGVAPMetalView : UIView
 
-@interface QGVAPMetalRenderer : NSObject
-
+@property (nonatomic, weak) id<QGVAPMetalViewDelegate> delegate;
 @property (nonatomic, strong) QGVAPCommonInfo *commonInfo;
 @property (nonatomic, strong) QGVAPMaskInfo *maskInfo;
 
-- (instancetype)initWithMetalLayer:(CAMetalLayer *)layer;
-
-- (void)renderPixelBuffer:(CVPixelBufferRef)pixelBuffer metalLayer:(CAMetalLayer *)layer mergeInfos:(NSArray<QGVAPMergedInfo *> *)infos;
+- (void)display:(CVPixelBufferRef)pixelBuffer mergeInfos:(NSArray<QGVAPMergedInfo *> *)infos;
 
 - (void)dispose;
 
 @end
-
-#endif
