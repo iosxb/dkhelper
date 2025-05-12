@@ -1,4 +1,4 @@
-// QGAnimatedImageBufferManager.h
+// QGAnimatedImageDecodeThread.m
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -13,17 +13,17 @@
 // either express or implied. See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Foundation/Foundation.h>
-#import "QGAnimatedImageDecodeConfig.h"
-#import "QGBaseAnimatedImageFrame.h"
+#import "QGAnimatedImageDecodeThread.h"
 
-@interface QGAnimatedImageBufferManager : NSObject
+@implementation QGAnimatedImageDecodeThread
 
-@property (nonatomic, strong) NSMutableArray *buffers;//缓冲
-
-- (instancetype)initWithConfig:(QGAnimatedImageDecodeConfig *)config;
-- (QGBaseAnimatedImageFrame *)getBufferedFrame:(NSInteger)frameIndex;
-- (BOOL)isBufferFull;
-- (QGBaseAnimatedImageFrame *)popVideoFrame;
+- (NSString *)sequenceDec
+{
+#ifdef DEBUG
+    return [NSString stringWithFormat:@"%@",@([[self valueForKeyPath:@"private.seqNum"] integerValue])];//
+#else
+    return [self description];
+#endif
+}
 
 @end

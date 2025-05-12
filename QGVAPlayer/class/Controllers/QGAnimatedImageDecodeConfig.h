@@ -1,4 +1,4 @@
-// QGAnimatedImageBufferManager.h
+// QGAnimatedImageDecodeConfig.h
 // Tencent is pleased to support the open source community by making vap available.
 //
 // Copyright (C) 2020 THL A29 Limited, a Tencent company.  All rights reserved.
@@ -14,16 +14,12 @@
 // limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import "QGAnimatedImageDecodeConfig.h"
-#import "QGBaseAnimatedImageFrame.h"
 
-@interface QGAnimatedImageBufferManager : NSObject
+@interface QGAnimatedImageDecodeConfig : NSObject
 
-@property (nonatomic, strong) NSMutableArray *buffers;//缓冲
+@property (nonatomic, assign) NSInteger threadCount;//线程数
+@property (nonatomic, assign) NSInteger bufferCount;//缓冲数
 
-- (instancetype)initWithConfig:(QGAnimatedImageDecodeConfig *)config;
-- (QGBaseAnimatedImageFrame *)getBufferedFrame:(NSInteger)frameIndex;
-- (BOOL)isBufferFull;
-- (QGBaseAnimatedImageFrame *)popVideoFrame;
++ (instancetype)defaultConfig;
 
 @end
