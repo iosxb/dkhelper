@@ -48,7 +48,7 @@ return cValue; \
 }
 #endif
 
-#import "QGHWDShaderTypes.h"
+#import "QGVAPlayer/Shaders/QGHWDShaderTypes.h"
 #import <UIKit/UIKit.h>
 #import "QGVAPMaskInfo.h"
 
