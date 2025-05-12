@@ -15,7 +15,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "QGVAPlayer.h"
+#import "QGVAPlayer/class/QGVAPlayer.h"
 
 @interface DKLaunchHelper : NSObject
 + (void)clearLaunchScreenCache;
